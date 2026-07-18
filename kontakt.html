@@ -3,23 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Kontakt z Pracownią Pięknej Przestrzeni — umów konsultację, opowiedz o swojej przestrzeni i rozpocznij projekt wnętrza dopasowany do Ciebie." />
+    <meta
+      name="description"
+      content="Kontakt z Pracownią Pięknej Przestrzeni — umów konsultację, opowiedz o swojej przestrzeni i rozpocznij projekt wnętrza dopasowany do Ciebie."
+    />
+
     <title>Kontakt | Pracownia Pięknej Przestrzeni</title>
+
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" type="image/png" href="./assets/favicon-v4.png" />
-    <link rel="shortcut icon" href="./assets/favicon-v4.png" />
-    <link rel="apple-touch-icon" href="./assets/favicon-v4.png" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+    <style>
+      .form-honeypot {
+        position: absolute;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .form-status {
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      .form-status.is-success {
+        color: #406447;
+      }
+
+      .form-status.is-error {
+        color: #9b3737;
+      }
+
+      .contact-form button[disabled] {
+        cursor: wait;
+        opacity: 0.65;
+      }
+    </style>
   </head>
 
   <body>
     <header class="site-header" id="top">
-      <a class="brand" href="index.html" aria-label="Pracownia Pięknej Przestrzeni">
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Pracownia Pięknej Przestrzeni"
+      >
         <span class="brand__mark">PPP</span>
         <span class="brand__divider"></span>
         <span class="brand__text">Pracownia<br />Pięknej Przestrzeni</span>
       </a>
 
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Otwórz menu">
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-label="Otwórz menu"
+      >
         <span></span>
         <span></span>
         <span></span>
@@ -34,113 +76,298 @@
         <a href="kontakt.html" aria-current="page">Kontakt</a>
       </nav>
 
-      <a class="button button--dark header-cta" href="kontakt.html">Umów konsultację</a>
+      <a class="button button--dark header-cta" href="kontakt.html">
+        Umów konsultację
+      </a>
     </header>
 
     <main>
       <section class="page-hero" aria-labelledby="contact-hero-title">
         <div class="page-hero__content reveal">
           <p class="eyebrow">Kontakt</p>
-          <h1 id="contact-hero-title">Opowiedz mi o przestrzeni, którą chcesz stworzyć.</h1>
+
+          <h1 id="contact-hero-title">
+            Opowiedz mi o przestrzeni, którą chcesz stworzyć.
+          </h1>
+
           <p>
-            Napisz kilka słów o swoim wnętrzu, zakresie projektu i efekcie, który chcesz osiągnąć.
-            Odpowiem z propozycją kolejnego kroku i spokojnie przeprowadzę Cię przez początek współpracy.
+            Napisz kilka słów o swoim wnętrzu, zakresie projektu i efekcie,
+            który chcesz osiągnąć. Odpowiem z propozycją kolejnego kroku
+            i spokojnie przeprowadzę Cię przez początek współpracy.
           </p>
         </div>
 
         <div class="page-hero__image reveal reveal--delay">
-          <img src="assets/jasna-harmonia.jpg" alt="Jasne, harmonijne wnętrze z naturalnymi materiałami" />
+          <img
+            src="assets/jasna-harmonia.jpg"
+            alt="Jasne, harmonijne wnętrze z naturalnymi materiałami"
+          />
         </div>
       </section>
 
       <section class="contact-page" aria-labelledby="contact-title">
         <div class="contact-page__content reveal">
           <p class="eyebrow">Pierwszy krok</p>
+
           <h2 id="contact-title">Umów konsultację lub zadaj pytanie</h2>
+
           <p>
-            Każdy projekt zaczyna się od rozmowy. Możesz napisać maila, zadzwonić albo skorzystać z
-            formularza — wystarczy krótki opis przestrzeni, metraż oraz informacja, czego potrzebujesz.
+            Każdy projekt zaczyna się od rozmowy. Możesz napisać maila,
+            zadzwonić albo skorzystać z formularza — wystarczy krótki opis
+            przestrzeni, metraż oraz informacja, czego potrzebujesz.
           </p>
 
           <div class="contact-page__details" aria-label="Dane kontaktowe">
-            <a class="contact-page__detail" href="tel:+48509850497" aria-label="Zadzwoń do Pracowni Pięknej Przestrzeni">
+            <a
+              class="contact-page__detail"
+              href="tel:+48509850497"
+              aria-label="Zadzwoń do Pracowni Pięknej Przestrzeni"
+            >
               <span class="contact-page__detail-icon">☎</span>
               <span>+48 509 850 497</span>
             </a>
-            <a class="contact-page__detail" href="mailto:pracownia.miszczyszyn@gmail.com" aria-label="Napisz e-mail do Pracowni Pięknej Przestrzeni">
+
+            <a
+              class="contact-page__detail"
+              href="mailto:pracownia.miszczyszyn@gmail.com"
+              aria-label="Napisz e-mail do Pracowni Pięknej Przestrzeni"
+            >
               <span class="contact-page__detail-icon">✉</span>
               <span>pracownia.miszczyszyn@gmail.com</span>
             </a>
-            <span class="contact-page__detail contact-page__detail--static">
+
+            <span
+              class="contact-page__detail contact-page__detail--static"
+            >
               <span class="contact-page__detail-icon">⌂</span>
               <span>Szczecin i projekty online</span>
             </span>
           </div>
         </div>
 
-        <form class="contact-form reveal reveal--delay" action="mailto:pracownia.miszczyszyn@gmail.com" method="post" enctype="text/plain">
+        <form
+          id="contact-form"
+          class="contact-form reveal reveal--delay"
+          action="https://formspree.io/f/xlgqbjqp"
+          method="POST"
+          accept-charset="UTF-8"
+        >
+          <input
+            type="hidden"
+            name="_subject"
+            value="Nowe zapytanie ze strony Pracowni Pięknej Przestrzeni"
+          />
+
+          <div class="form-honeypot" aria-hidden="true">
+            <label>
+              Nie wypełniaj tego pola
+              <input
+                type="text"
+                name="_gotcha"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </label>
+          </div>
+
           <label>
             Imię
-            <input type="text" name="imie" placeholder="Twoje imię" required />
+            <input
+              type="text"
+              name="imie"
+              placeholder="Twoje imię"
+              autocomplete="name"
+              required
+            />
           </label>
 
           <label>
             E-mail
-            <input type="email" name="email" placeholder="twoj@email.pl" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="twoj@email.pl"
+              autocomplete="email"
+              required
+            />
           </label>
 
           <label>
             Telefon
-            <input type="tel" name="telefon" placeholder="Opcjonalnie" />
+            <input
+              type="tel"
+              name="telefon"
+              placeholder="Opcjonalnie"
+              autocomplete="tel"
+            />
           </label>
 
           <label>
             Wiadomość
-            <textarea name="wiadomosc" rows="5" placeholder="Napisz, jakiej przestrzeni dotyczy projekt i czego potrzebujesz" required></textarea>
+            <textarea
+              name="wiadomosc"
+              rows="5"
+              placeholder="Napisz, jakiej przestrzeni dotyczy projekt i czego potrzebujesz"
+              required
+            ></textarea>
           </label>
 
-          <button class="button button--dark" type="submit">Wyślij wiadomość</button>
-          <p class="form-note">Formularz otworzy Twój program pocztowy z gotową wiadomością.</p>
+          <button
+            class="button button--dark"
+            type="submit"
+            data-default-label="Wyślij wiadomość"
+          >
+            Wyślij wiadomość
+          </button>
+
+          <p
+            class="form-status"
+            id="form-status"
+            role="status"
+            aria-live="polite"
+            hidden
+          ></p>
         </form>
       </section>
 
       <section class="process-cta" aria-labelledby="contact-process-title">
         <p class="eyebrow">Jak wygląda start?</p>
-        <h2 id="contact-process-title">Po wiadomości ustalimy zakres, potrzeby i najlepszą formę współpracy.</h2>
+
+        <h2 id="contact-process-title">
+          Po wiadomości ustalimy zakres, potrzeby i najlepszą formę współpracy.
+        </h2>
+
         <p>
-          Jeśli nie wiesz jeszcze, czego dokładnie potrzebujesz, wystarczy krótki opis sytuacji.
-          Wspólnie uporządkujemy kierunek projektu i dobierzemy rozwiązanie dopasowane do Twojej przestrzeni.
+          Jeśli nie wiesz jeszcze, czego dokładnie potrzebujesz, wystarczy
+          krótki opis sytuacji. Wspólnie uporządkujemy kierunek projektu
+          i dobierzemy rozwiązanie dopasowane do Twojej przestrzeni.
         </p>
-        <a class="button button--light" href="proces.html">Zobacz proces współpracy</a>
+
+        <a class="button button--light" href="proces.html">
+          Zobacz proces współpracy
+        </a>
       </section>
     </main>
 
     <footer class="site-footer">
-        <a class="brand brand--footer" href="index.html" aria-label="Pracownia Pięknej Przestrzeni">
-          <span class="brand__mark">PPP</span>
-          <span class="brand__divider"></span>
-          <span class="brand__text">Pracownia<br />Pięknej Przestrzeni</span>
+      <a
+        class="brand brand--footer"
+        href="index.html"
+        aria-label="Pracownia Pięknej Przestrzeni"
+      >
+        <span class="brand__mark">PPP</span>
+        <span class="brand__divider"></span>
+        <span class="brand__text">Pracownia<br />Pięknej Przestrzeni</span>
+      </a>
+
+      <div class="footer-contact">
+        <a
+          class="footer-contact__item"
+          href="tel:+48509850497"
+          aria-label="Zadzwoń do Pracowni Pięknej Przestrzeni"
+        >
+          <span class="footer-contact__icon">☎</span>
+          <span>+48 509 850 497</span>
         </a>
-        <div class="footer-contact">
-          <a class="footer-contact__item" href="tel:+48509850497" aria-label="Zadzwoń do Pracowni Pięknej Przestrzeni">
-            <span class="footer-contact__icon">☎</span>
-            <span>+48 509 850 497</span>
-          </a>
-        
-          <a class="footer-contact__item" href="mailto:pracownia.miszczyszyn@gmail.com" aria-label="Napisz e-mail do Pracowni Pięknej Przestrzeni">
-            <span class="footer-contact__icon">✉</span>
-            <span>pracownia.miszczyszyn@gmail.com</span>
-          </a>
-        </div>
-        <div class="footer-social" aria-label="Social media">
-          <a href="https://www.instagram.com/ppp.magda.miszczyszyn" target="_blank" rel="noopener noreferrer" aria-label="Instagram Pracowni Pięknej Przestrzeni">
-            <svg class="footer-social__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5Zm4.25 3.25A4.75 4.75 0 1 1 7.25 12 4.75 4.75 0 0 1 12 7.25Zm0 2A2.75 2.75 0 1 0 14.75 12 2.75 2.75 0 0 0 12 9.25Zm5-2.25a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z" />
-            </svg>
-          </a>
-        </div>
-      </footer>
+
+        <a
+          class="footer-contact__item"
+          href="mailto:pracownia.miszczyszyn@gmail.com"
+          aria-label="Napisz e-mail do Pracowni Pięknej Przestrzeni"
+        >
+          <span class="footer-contact__icon">✉</span>
+          <span>pracownia.miszczyszyn@gmail.com</span>
+        </a>
+      </div>
+
+      <div class="footer-social" aria-label="Social media">
+        <a
+          href="https://www.instagram.com/ppp.magda.miszczyszyn"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram Pracowni Pięknej Przestrzeni"
+        >
+          <svg
+            class="footer-social__icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5Zm4.25 3.25A4.75 4.75 0 1 1 7.25 12 4.75 4.75 0 0 1 12 7.25Zm0 2A2.75 2.75 0 1 0 14.75 12 2.75 2.75 0 0 0 12 9.25Zm5-2.25a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"
+            />
+          </svg>
+        </a>
+      </div>
+    </footer>
 
     <script src="script.js"></script>
+
+    <script>
+      (() => {
+        const form = document.querySelector("#contact-form");
+        const status = document.querySelector("#form-status");
+
+        if (!form || !status) return;
+
+        const submitButton = form.querySelector('button[type="submit"]');
+        const defaultButtonLabel =
+          submitButton?.dataset.defaultLabel || "Wyślij wiadomość";
+
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          if (!form.reportValidity()) return;
+
+          status.hidden = true;
+          status.textContent = "";
+          status.className = "form-status";
+
+          if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = "Wysyłanie…";
+          }
+
+          try {
+            const response = await fetch(form.action, {
+              method: form.method,
+              body: new FormData(form),
+              headers: {
+                Accept: "application/json",
+              },
+            });
+
+            if (!response.ok) {
+              const responseData = await response.json().catch(() => null);
+              const formspreeMessage = responseData?.errors
+                ?.map((error) => error.message)
+                .filter(Boolean)
+                .join(" ");
+
+              throw new Error(formspreeMessage || "Nie udało się wysłać formularza.");
+            }
+
+            form.reset();
+
+            status.textContent =
+              "Dziękuję — wiadomość została wysłana. Odpowiem najszybciej, jak to możliwe.";
+            status.classList.add("is-success");
+            status.hidden = false;
+          } catch (error) {
+            console.error(error);
+
+            status.textContent =
+              "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz bezpośrednio na pracownia.miszczyszyn@gmail.com.";
+            status.classList.add("is-error");
+            status.hidden = false;
+          } finally {
+            if (submitButton) {
+              submitButton.disabled = false;
+              submitButton.textContent = defaultButtonLabel;
+            }
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
