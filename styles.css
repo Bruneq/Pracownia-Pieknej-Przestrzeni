@@ -2731,3 +2731,199 @@ body:has(.portfolio-lightbox[open]) {
     transition: none;
   }
 }
+
+/* =========================================================
+   SUBTELNE ANIMACJE + PRZYCISK „WRÓĆ NA GÓRĘ”
+   ========================================================= */
+
+html {
+  scroll-padding-top: 104px;
+}
+
+/* Delikatne wejście całej zawartości po przejściu na podstronę. */
+.motion-enhanced main {
+  animation: page-enter 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0.94;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Elementy są dodawane automatycznie przez script.js — bez zmian w HTML. */
+.motion-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 680ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 680ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--motion-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.motion-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  will-change: auto;
+}
+
+/* Bardzo subtelna reakcja kart na najechanie kursorem. */
+@media (hover: hover) and (pointer: fine) {
+  .service-card,
+  .process-card,
+  .value-card,
+  .principle-card,
+  .package-card {
+    transition:
+      transform 260ms ease,
+      background-color 260ms ease,
+      border-color 260ms ease,
+      box-shadow 260ms ease;
+  }
+
+  .service-card:hover,
+  .process-card:hover,
+  .value-card:hover,
+  .principle-card:hover,
+  .package-card:hover {
+    transform: translateY(-4px);
+    background-color: rgba(255, 253, 249, 0.82);
+    border-color: rgba(56, 43, 35, 0.22);
+    box-shadow: 0 18px 44px rgba(57, 42, 31, 0.09);
+  }
+
+  .package-card--featured:hover {
+    transform: translateY(-22px);
+  }
+}
+
+.button:active,
+.text-link:active {
+  transform: translateY(0) scale(0.985);
+}
+
+/* Przycisk „Wróć na górę”. */
+.back-to-top {
+  position: fixed;
+  right: clamp(16px, 2.6vw, 34px);
+  bottom: clamp(16px, 2.6vw, 34px);
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 11px 17px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(23, 20, 18, 0.88);
+  box-shadow: 0 14px 38px rgba(23, 20, 18, 0.2);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(14px) scale(0.96);
+  transition:
+    opacity 240ms ease,
+    visibility 240ms ease,
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.back-to-top:hover {
+  background: rgba(58, 48, 42, 0.96);
+  box-shadow: 0 18px 46px rgba(23, 20, 18, 0.26);
+  transform: translateY(-2px) scale(1);
+}
+
+.back-to-top:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.back-to-top:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.back-to-top__icon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+}
+
+.back-to-top__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 680px) {
+  .back-to-top {
+    width: 48px;
+    height: 48px;
+    min-height: 48px;
+    padding: 0;
+  }
+
+  .back-to-top__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .motion-enhanced main {
+    animation: none;
+  }
+
+  .motion-reveal,
+  .motion-reveal.is-visible,
+  .back-to-top,
+  .back-to-top.is-visible,
+  .service-card,
+  .process-card,
+  .value-card,
+  .principle-card,
+  .package-card {
+    transition: none;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .package-card--featured {
+    transform: translateY(-18px);
+  }
+}

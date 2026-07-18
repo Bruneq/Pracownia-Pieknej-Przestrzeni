@@ -165,3 +165,150 @@ document.addEventListener(
   },
   true
 );
+
+// =========================================================
+// SUBTELNE ANIMACJE + PRZYCISK „WRÓĆ NA GÓRĘ”
+// =========================================================
+(() => {
+  const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const prefersReducedMotion = () => reduceMotionQuery.matches;
+
+  document.documentElement.classList.add('motion-enhanced');
+
+  /*
+   * Automatycznie dodaje delikatne wejścia do najważniejszych elementów.
+   * Dzięki temu nie trzeba dopisywać klas w każdym pliku HTML.
+   */
+  const motionSelectors = [
+    '.hero__content > *',
+    '.hero__image',
+    '.service-card',
+    '.project-card',
+    '.about__image',
+    '.about__content > *',
+    '.process-card',
+    '.contact-cta__content > *',
+    '.page-hero__content > *',
+    '.page-hero__image',
+    '.subpage-hero__content > *',
+    '.subpage-hero__image',
+    '.page-split__content > *',
+    '.page-split__media',
+    '.value-card',
+    '.offer-card',
+    '.package-card',
+    '.timeline-step',
+    '.process-deliverables__content > *',
+    '.process-deliverables__image',
+    '.principle-card',
+    '.portfolio-hero__content > *',
+    '.portfolio-hero__image',
+    '.portfolio-index__heading > *',
+    '.portfolio-index-card',
+    '.portfolio-project__header > *',
+    '.portfolio-project__intro > *',
+    '.portfolio-image',
+    '.contact-page__details > *',
+    '.contact-form',
+    '.faq-item',
+    '.cta-section > *',
+    '.process-cta > *',
+    '.portfolio-cta__content > *'
+  ];
+
+  const candidates = Array.from(
+    document.querySelectorAll(motionSelectors.join(','))
+  ).filter((element) => {
+    return (
+      !element.classList.contains('reveal') &&
+      !element.classList.contains('motion-reveal') &&
+      !element.closest('.site-header') &&
+      !element.closest('.site-footer') &&
+      !element.closest('.portfolio-lightbox')
+    );
+  });
+
+  const siblingCounters = new WeakMap();
+
+  candidates.forEach((element) => {
+    const parent = element.parentElement;
+    const siblingIndex = parent ? siblingCounters.get(parent) || 0 : 0;
+    const delay = Math.min(siblingIndex, 4) * 65;
+
+    element.classList.add('motion-reveal');
+    element.style.setProperty('--motion-delay', `${delay}ms`);
+
+    if (parent) {
+      siblingCounters.set(parent, siblingIndex + 1);
+    }
+  });
+
+  if (!prefersReducedMotion() && 'IntersectionObserver' in window) {
+    const motionObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: '0px 0px -7% 0px'
+      }
+    );
+
+    candidates.forEach((element) => motionObserver.observe(element));
+  } else {
+    candidates.forEach((element) => element.classList.add('is-visible'));
+  }
+
+  // Przycisk jest tworzony w JavaScript, więc nie trzeba edytować wszystkich podstron.
+  const backToTop = document.createElement('button');
+  backToTop.className = 'back-to-top';
+  backToTop.type = 'button';
+  backToTop.setAttribute('aria-label', 'Wróć na górę strony');
+  backToTop.setAttribute('aria-hidden', 'true');
+  backToTop.tabIndex = -1;
+  backToTop.innerHTML = `
+    <svg class="back-to-top__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 19V5M6.5 10.5 12 5l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <span class="back-to-top__label">Wróć na górę</span>
+  `;
+
+  document.body.append(backToTop);
+
+  let scrollFrameRequested = false;
+
+  const updateBackToTop = () => {
+    const shouldShow = window.scrollY > Math.max(520, window.innerHeight * 0.65);
+
+    backToTop.classList.toggle('is-visible', shouldShow);
+    backToTop.setAttribute('aria-hidden', String(!shouldShow));
+    backToTop.tabIndex = shouldShow ? 0 : -1;
+    scrollFrameRequested = false;
+  };
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (scrollFrameRequested) return;
+      scrollFrameRequested = true;
+      window.requestAnimationFrame(updateBackToTop);
+    },
+    { passive: true }
+  );
+
+  window.addEventListener('resize', updateBackToTop);
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion() ? 'auto' : 'smooth'
+    });
+  });
+
+  updateBackToTop();
+})();
