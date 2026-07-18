@@ -101,33 +101,67 @@ const updatePortfolioLightbox = (index) => {
   portfolioLightboxCaption.textContent = item.dataset.caption || sourceImage.alt;
 };
 
+let portfolioLightboxTrigger = null;
+
 portfolioLightboxItems.forEach((item, index) => {
   item.addEventListener('click', () => {
     if (!portfolioLightbox) return;
 
+    portfolioLightboxTrigger = item;
     updatePortfolioLightbox(index);
-    portfolioLightbox.showModal();
+
+    if (!portfolioLightbox.open) {
+      portfolioLightbox.showModal();
+    }
+
+    // Utrzymuje fokus wewnątrz modala także w Safari i przy wielu monitorach.
+    requestAnimationFrame(() => {
+      portfolioLightboxClose?.focus({ preventScroll: true });
+    });
   });
 });
 
 portfolioLightboxClose?.addEventListener('click', () => portfolioLightbox?.close());
-portfolioLightboxPrev?.addEventListener('click', () => updatePortfolioLightbox(activePortfolioImage - 1));
-portfolioLightboxNext?.addEventListener('click', () => updatePortfolioLightbox(activePortfolioImage + 1));
+portfolioLightboxPrev?.addEventListener('click', (event) => {
+  event.stopPropagation();
+  updatePortfolioLightbox(activePortfolioImage - 1);
+});
+portfolioLightboxNext?.addEventListener('click', (event) => {
+  event.stopPropagation();
+  updatePortfolioLightbox(activePortfolioImage + 1);
+});
 
+// W natywnym <dialog> kliknięcie w backdrop ma jako target sam dialog.
+// Nie porównujemy współrzędnych, bo przy szerokim drugim monitorze przyciski
+// ustawione position: fixed mogą znajdować się poza prostokątem dialogu.
 portfolioLightbox?.addEventListener('click', (event) => {
-  const bounds = portfolioLightbox.getBoundingClientRect();
-  const clickedOutside =
-    event.clientX < bounds.left ||
-    event.clientX > bounds.right ||
-    event.clientY < bounds.top ||
-    event.clientY > bounds.bottom;
-
-  if (clickedOutside) portfolioLightbox.close();
+  if (event.target === portfolioLightbox) {
+    portfolioLightbox.close();
+  }
 });
 
-window.addEventListener('keydown', (event) => {
-  if (!portfolioLightbox?.open) return;
-
-  if (event.key === 'ArrowLeft') updatePortfolioLightbox(activePortfolioImage - 1);
-  if (event.key === 'ArrowRight') updatePortfolioLightbox(activePortfolioImage + 1);
+portfolioLightbox?.addEventListener('close', () => {
+  portfolioLightboxTrigger?.focus({ preventScroll: true });
+  portfolioLightboxTrigger = null;
 });
+
+// Capture sprawia, że nawigacja działa niezależnie od tego,
+// który element modala ma aktualnie fokus.
+document.addEventListener(
+  'keydown',
+  (event) => {
+    if (!portfolioLightbox?.open) return;
+
+    if (event.key === 'ArrowLeft' || event.code === 'ArrowLeft') {
+      event.preventDefault();
+      updatePortfolioLightbox(activePortfolioImage - 1);
+      return;
+    }
+
+    if (event.key === 'ArrowRight' || event.code === 'ArrowRight') {
+      event.preventDefault();
+      updatePortfolioLightbox(activePortfolioImage + 1);
+    }
+  },
+  true
+);
