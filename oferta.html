@@ -547,6 +547,45 @@
         margin: 0;
       }
 
+
+.offer-faq-link {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(38px, 8vw, 118px);
+  align-items: center;
+  padding: clamp(70px, 9vw, 125px) clamp(24px, 7vw, 112px);
+  color: #f7f4ee;
+  background: var(--offer-green);
+}
+
+.offer-faq-link h2 {
+  margin: 15px 0 0;
+  font-size: clamp(2.55rem, 4.5vw, 5.2rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.offer-faq-link .eyebrow {
+  color: #dce3dd;
+}
+
+.offer-faq-link__content {
+  max-width: 690px;
+}
+
+.offer-faq-link__content p {
+  margin: 0 0 28px;
+  color: rgba(247, 244, 238, 0.74);
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+.offer-faq-link .button--outline {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.48);
+}
+
       .offer-final-cta {
         display: grid;
         justify-items: center;
@@ -598,8 +637,7 @@
         }
 
         .offer-intro,
-        .offer-rules,
-        .offer-faq {
+        .offer-rules {
           grid-template-columns: 1fr;
         }
 
@@ -608,7 +646,8 @@
         }
 
         .offer-deliverables__heading,
-        .offer-packages__heading {
+        .offer-packages__heading,
+        .offer-faq-link {
           grid-template-columns: 1fr;
           align-items: start;
         }
@@ -701,11 +740,6 @@
         }
       }
 
-      @media (prefers-reduced-motion: reduce) {
-        .offer-faq summary::after {
-          transition: none;
-        }
-      }
     </style>
   </head>
 
@@ -739,6 +773,7 @@
         <a href="realizacje.html">Realizacje</a>
         <a href="proces.html">Proces</a>
         <a href="kontakt.html">Kontakt</a>
+        <a href="faq.html">FAQ</a>
       </nav>
 
       <a class="button button--dark header-cta" href="kontakt.html">
@@ -767,8 +802,8 @@
               Zobacz zakresy współpracy
             </a>
 
-            <a class="button button--outline" href="kontakt.html">
-              Zapytaj o projekt
+            <a class="button button--outline" href="faq.html">
+              Najczęstsze pytania
             </a>
           </div>
         </div>
@@ -1157,111 +1192,27 @@
         </div>
       </section>
 
-      <section class="offer-faq" id="faq" aria-labelledby="faq-title">
-        <div class="offer-faq__heading reveal">
-          <p class="eyebrow">FAQ</p>
-          <h2 id="faq-title">Najczęstsze pytania</h2>
+      
 
-          <p>
-            Nie znajdujesz swojej odpowiedzi? Napisz krótko, jakiej przestrzeni
-            dotyczy projekt — pomogę dobrać odpowiedni zakres współpracy.
-          </p>
-        </div>
 
-        <div class="offer-faq__list reveal">
-          <details>
-            <summary>Czy projekt może zostać wykonany całkowicie online?</summary>
-            <div class="offer-faq__answer">
-              <p>
-                Tak. Współpraca zdalna jest możliwa na podstawie rzutu,
-                dokładnych wymiarów, zdjęć i pozostałych materiałów
-                przekazanych przez klienta. Przed rozpoczęciem potwierdzamy,
-                czy dokumentacja jest wystarczająca dla wybranego zakresu.
-              </p>
-            </div>
-          </details>
+<section class="offer-faq-link" aria-labelledby="offer-faq-link-title">
+  <div class="reveal">
+    <p class="eyebrow">Masz pytania?</p>
+    <h2 id="offer-faq-link-title">Najważniejsze odpowiedzi w jednym miejscu</h2>
+  </div>
 
-          <details>
-            <summary>Czy mogę zamówić projekt tylko jednego pokoju?</summary>
-            <div class="offer-faq__answer">
-              <p>
-                Tak. Zakres może dotyczyć całego mieszkania, domu, lokalu albo
-                pojedynczego pomieszczenia, na przykład salonu, sypialni,
-                pokoju gościnnego czy niewielkiej kawalerki.
-              </p>
-            </div>
-          </details>
+  <div class="offer-faq-link__content reveal reveal--delay">
+    <p>
+      Sprawdź informacje o współpracy online, pomiarach, materiałach
+      potrzebnych na początku, czasie realizacji, poprawkach, wycenie
+      oraz sposobie płatności.
+    </p>
 
-          <details>
-            <summary>Jakie materiały należy przygotować na początku?</summary>
-            <div class="offer-faq__answer">
-              <p>
-                Najbardziej pomocne są: rzut lub szkic z wymiarami, zdjęcia
-                obecnego wnętrza, informacje o instalacjach i elementach,
-                które mają pozostać, a także inspiracje oraz orientacyjny
-                budżet przeznaczony na realizację.
-              </p>
-            </div>
-          </details>
-
-          <details>
-            <summary>Czy wykonujesz pomiary wnętrza?</summary>
-            <div class="offer-faq__answer">
-              <p>
-                Sposób przygotowania wymiarów ustalamy przed rozpoczęciem
-                współpracy. Przy projektach online klient przekazuje pomiary
-                i dokumentację. Możliwość pomiaru stacjonarnego zależy od
-                lokalizacji i zakresu zlecenia.
-              </p>
-            </div>
-          </details>
-
-          <details>
-            <summary>Ile trwa przygotowanie projektu?</summary>
-            <div class="offer-faq__answer">
-              <p>
-                Czas zależy od wielkości przestrzeni, wybranego zakresu,
-                liczby pomieszczeń oraz kompletności materiałów. Orientacyjny
-                termin otrzymasz przed rozpoczęciem prac.
-              </p>
-            </div>
-          </details>
-
-          <details>
-            <summary>Ile zmian można wprowadzić do projektu?</summary>
-            <div class="offer-faq__answer">
-              <p>
-                Zakres korekt i sposób przekazywania uwag są określane
-                indywidualnie w propozycji współpracy. Pozwala to jasno
-                ustalić przebieg pracy przed jej rozpoczęciem.
-              </p>
-            </div>
-          </details>
-
-          <details>
-            <summary>Czy projekt zawiera listę produktów i materiałów?</summary>
-            <div class="offer-faq__answer">
-              <p>
-                Dobór wyposażenia i materiałów może stanowić część projektu.
-                Dokładna forma rekomendacji oraz poziom szczegółowości zależą
-                od wybranego pakietu i są potwierdzane przed startem.
-              </p>
-            </div>
-          </details>
-
-          <details>
-            <summary>W jaki sposób ustalana jest cena i płatność?</summary>
-            <div class="offer-faq__answer">
-              <p>
-                Wycena jest przygotowywana po poznaniu metrażu, liczby
-                pomieszczeń i oczekiwanego zakresu. Warunki płatności oraz
-                ewentualny podział na etapy są przedstawiane razem
-                z propozycją współpracy.
-              </p>
-            </div>
-          </details>
-        </div>
-      </section>
+    <a class="button button--outline" href="faq.html">
+      Przejdź do FAQ
+    </a>
+  </div>
+</section>
 
       <section class="offer-final-cta" aria-labelledby="offer-cta-title">
         <p class="eyebrow">Pierwszy krok</p>

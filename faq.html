@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Najczęstsze pytania dotyczące projektowania wnętrz, współpracy online, pomiarów, wizualizacji 3D, wyceny i przebiegu projektu w Pracowni Pięknej Przestrzeni."
+    />
+
+    <title>FAQ | Pracownia Pięknej Przestrzeni</title>
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <script src="script.js" defer></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Czy projekt może zostać wykonany całkowicie online?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tak. Współpraca zdalna jest możliwa na podstawie rzutu, dokładnych wymiarów, zdjęć i pozostałych materiałów przekazanych przez klienta."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy mogę zamówić projekt tylko jednego pokoju?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tak. Zakres może dotyczyć całego mieszkania, domu, lokalu albo pojedynczego pomieszczenia."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jakie materiały należy przygotować na początku?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Najbardziej pomocne są rzut lub szkic z wymiarami, zdjęcia wnętrza, informacje o instalacjach, inspiracje oraz orientacyjny budżet."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ile trwa przygotowanie projektu?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Czas zależy od wielkości przestrzeni, wybranego zakresu, liczby pomieszczeń i kompletności materiałów. Termin jest potwierdzany przed rozpoczęciem prac."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "W jaki sposób ustalana jest cena?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Wycena jest przygotowywana indywidualnie po poznaniu metrażu, liczby pomieszczeń oraz oczekiwanego zakresu opracowania."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <style>
+      .faq-page {
+        --faq-dark: #282c29;
+        --faq-green: #536257;
+        --faq-paper: #fbf8f3;
+        --faq-soft: #f2ede5;
+        --faq-line: rgba(42, 45, 42, 0.16);
+      }
+
+      .faq-page *,
+      .faq-page *::before,
+      .faq-page *::after {
+        box-sizing: border-box;
+      }
+
+      .faq-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+        min-height: min(790px, calc(100vh - 88px));
+        padding-top: 88px;
+        background: var(--faq-paper);
+      }
+
+      .faq-hero__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: clamp(70px, 8vw, 132px) clamp(28px, 7vw, 110px);
+      }
+
+      .faq-hero h1 {
+        max-width: 760px;
+        margin: 18px 0 28px;
+        font-size: clamp(3.15rem, 5.8vw, 6.8rem);
+        font-weight: 400;
+        line-height: 0.94;
+        letter-spacing: -0.055em;
+      }
+
+      .faq-hero__lead {
+        max-width: 630px;
+        margin: 0;
+        color: var(--muted);
+        font-size: clamp(1.02rem, 1.45vw, 1.2rem);
+        line-height: 1.75;
+      }
+
+      .faq-hero__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 35px;
+      }
+
+      .faq-hero__visual {
+        position: relative;
+        min-height: 600px;
+        overflow: hidden;
+      }
+
+      .faq-hero__visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .faq-hero__card {
+        position: absolute;
+        right: clamp(18px, 4vw, 48px);
+        bottom: clamp(18px, 4vw, 48px);
+        width: min(300px, calc(100% - 36px));
+        padding: 25px 27px;
+        background: rgba(251, 248, 243, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .faq-hero__card strong,
+      .faq-hero__card span {
+        display: block;
+      }
+
+      .faq-hero__card strong {
+        margin-bottom: 7px;
+        font-family: var(--serif);
+        font-size: 1.55rem;
+        font-weight: 400;
+      }
+
+      .faq-hero__card span {
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+
+      .faq-layout {
+        display: grid;
+        grid-template-columns: minmax(250px, 0.64fr) minmax(0, 1.36fr);
+        gap: clamp(45px, 8vw, 125px);
+        padding: clamp(82px, 10vw, 150px) clamp(24px, 7vw, 112px);
+        background: var(--faq-soft);
+      }
+
+      .faq-layout__sidebar {
+        position: sticky;
+        top: 125px;
+        align-self: start;
+      }
+
+      .faq-layout__sidebar h2 {
+        margin: 15px 0 24px;
+        font-size: clamp(2.65rem, 4.5vw, 5.2rem);
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: -0.045em;
+      }
+
+      .faq-layout__sidebar > p:not(.eyebrow) {
+        max-width: 470px;
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .faq-jump {
+        display: grid;
+        gap: 8px;
+        margin-top: 34px;
+      }
+
+      .faq-jump a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 13px 0;
+        border-bottom: 1px solid var(--faq-line);
+        color: inherit;
+        text-decoration: none;
+        font-size: 0.92rem;
+      }
+
+      .faq-jump a span {
+        color: var(--accent);
+      }
+
+      .faq-content {
+        display: grid;
+        gap: 70px;
+      }
+
+      .faq-group {
+        scroll-margin-top: 125px;
+      }
+
+      .faq-group__heading {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 18px;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+
+      .faq-group__heading span {
+        color: var(--accent);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+      }
+
+      .faq-group__heading h2 {
+        margin: 0;
+        font-family: var(--sans);
+        font-size: clamp(1.4rem, 2.2vw, 2rem);
+        font-weight: 720;
+        letter-spacing: -0.02em;
+      }
+
+      .faq-list {
+        border-top: 1px solid var(--faq-line);
+      }
+
+      .faq-list details {
+        border-bottom: 1px solid var(--faq-line);
+      }
+
+      .faq-list summary {
+        display: grid;
+        grid-template-columns: 1fr 38px;
+        gap: 24px;
+        align-items: center;
+        padding: 27px 0;
+        cursor: pointer;
+        list-style: none;
+        font-size: clamp(1.04rem, 1.45vw, 1.28rem);
+        font-weight: 650;
+        line-height: 1.45;
+      }
+
+      .faq-list summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-list summary::after {
+        content: "+";
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--faq-line);
+        border-radius: 50%;
+        font-size: 1.32rem;
+        font-weight: 400;
+        transition: transform 220ms ease, background 220ms ease;
+      }
+
+      .faq-list details[open] summary::after {
+        transform: rotate(45deg);
+        background: var(--faq-paper);
+      }
+
+      .faq-answer {
+        max-width: 800px;
+        padding: 0 60px 30px 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .faq-answer p {
+        margin: 0;
+      }
+
+      .faq-note {
+        display: grid;
+        grid-template-columns: minmax(240px, 0.7fr) minmax(0, 1.3fr);
+        gap: clamp(35px, 7vw, 100px);
+        padding: clamp(72px, 9vw, 125px) clamp(24px, 7vw, 112px);
+        color: #f7f4ee;
+        background: var(--faq-green);
+      }
+
+      .faq-note h2 {
+        margin: 15px 0 0;
+        font-size: clamp(2.55rem, 4.5vw, 5.2rem);
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: -0.045em;
+      }
+
+      .faq-note .eyebrow {
+        color: #dce3dd;
+      }
+
+      .faq-note__content p {
+        max-width: 670px;
+        margin: 0 0 28px;
+        color: rgba(247, 244, 238, 0.75);
+        line-height: 1.75;
+      }
+
+      .faq-note__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .faq-note .button--outline {
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.48);
+      }
+
+      @media (max-width: 1050px) {
+        .faq-hero {
+          grid-template-columns: 1fr;
+        }
+
+        .faq-hero__visual {
+          min-height: 540px;
+        }
+
+        .faq-layout,
+        .faq-note {
+          grid-template-columns: 1fr;
+        }
+
+        .faq-layout__sidebar {
+          position: static;
+        }
+
+        .faq-jump {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 700px) {
+        .faq-hero {
+          padding-top: 74px;
+        }
+
+        .faq-hero__visual {
+          min-height: 430px;
+        }
+
+        .faq-hero__actions,
+        .faq-note__actions {
+          width: 100%;
+        }
+
+        .faq-hero__actions .button,
+        .faq-note__actions .button {
+          flex: 1 1 100%;
+          text-align: center;
+        }
+
+        .faq-jump {
+          grid-template-columns: 1fr;
+        }
+
+        .faq-list summary {
+          grid-template-columns: 1fr 34px;
+          gap: 15px;
+          padding: 23px 0;
+          font-size: 1.02rem;
+        }
+
+        .faq-list summary::after {
+          width: 32px;
+          height: 32px;
+        }
+
+        .faq-answer {
+          padding-right: 8px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .faq-list summary::after {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header" id="top">
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Pracownia Pięknej Przestrzeni"
+      >
+        <span class="brand__mark">PPP</span>
+        <span class="brand__divider"></span>
+        <span class="brand__text">Pracownia<br />Pięknej Przestrzeni</span>
+      </a>
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Otwórz menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav" aria-label="Główna nawigacja">
+        <a href="index.html">Strona główna</a>
+        <a href="o-mnie.html">O mnie</a>
+        <a href="oferta.html">Oferta</a>
+        <a href="realizacje.html">Realizacje</a>
+        <a href="proces.html">Proces</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+
+      <a class="button button--dark header-cta" href="kontakt.html">
+        Umów konsultację
+      </a>
+    </header>
+
+    <main class="faq-page">
+      <section class="faq-hero" aria-labelledby="faq-title">
+        <div class="faq-hero__content reveal">
+          <p class="eyebrow">FAQ</p>
+
+          <h1 id="faq-title">Odpowiedzi, zanim zaczniemy współpracę</h1>
+
+          <p class="faq-hero__lead">
+            Zebrałam najczęstsze pytania dotyczące zakresu projektu,
+            współpracy online, materiałów, pomiarów, wizualizacji,
+            harmonogramu i wyceny.
+          </p>
+
+          <div class="faq-hero__actions">
+            <a class="button button--dark" href="#wspolpraca">
+              Przejdź do pytań
+            </a>
+
+            <a class="button button--outline" href="oferta.html">
+              Zobacz ofertę
+            </a>
+          </div>
+        </div>
+
+        <div class="faq-hero__visual reveal reveal--delay">
+          <img
+            src="assets/jasna-harmonia.jpg"
+            alt="Jasne, harmonijne wnętrze z naturalnymi materiałami"
+          />
+
+          <div class="faq-hero__card">
+            <strong>Nie znalazłeś odpowiedzi?</strong>
+            <span>
+              Opisz krótko swoją przestrzeń w formularzu kontaktowym.
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-layout" aria-labelledby="faq-list-title">
+        <aside class="faq-layout__sidebar reveal">
+          <p class="eyebrow">Najczęstsze pytania</p>
+          <h2 id="faq-list-title">Wszystko w jednym miejscu</h2>
+
+          <p>
+            Szczegóły każdego projektu ustalane są indywidualnie, ale poniższe
+            odpowiedzi pomogą przygotować się do pierwszej rozmowy.
+          </p>
+
+          <nav class="faq-jump" aria-label="Kategorie pytań">
+            <a href="#wspolpraca">Współpraca <span>01</span></a>
+            <a href="#materialy">Materiały i pomiary <span>02</span></a>
+            <a href="#projekt">Projekt i realizacja <span>03</span></a>
+            <a href="#wycena">Wycena i płatność <span>04</span></a>
+          </nav>
+        </aside>
+
+        <div class="faq-content">
+          <section class="faq-group reveal" id="wspolpraca">
+            <div class="faq-group__heading">
+              <span>01</span>
+              <h2>Współpraca</h2>
+            </div>
+
+            <div class="faq-list">
+              <details>
+                <summary>Czy projekt może zostać wykonany całkowicie online?</summary>
+                <div class="faq-answer">
+                  <p>
+                    Tak. Współpraca zdalna jest możliwa na podstawie rzutu,
+                    dokładnych wymiarów, zdjęć i pozostałych materiałów
+                    przekazanych przez klienta. Przed rozpoczęciem potwierdzamy,
+                    czy dokumentacja jest wystarczająca dla wybranego zakresu.
+                  </p>
+                </div>
+              </details>
+
+              <details>
+                <summary>Czy mogę zamówić projekt tylko jednego pokoju?</summary>
+                <div class="faq-answer">
+                  <p>
+                    Tak. Zakres może dotyczyć całego mieszkania, domu, lokalu
+                    albo pojedynczego pomieszczenia, na przykład salonu,
+                    sypialni, pokoju gościnnego czy niewielkiej kawalerki.
+                  </p>
+                </div>
+              </details>
+
+              <details>
+                <summary>Jak wygląda pierwszy kontakt?</summary>
+                <div class="faq-answer">
+                  <p>
+                    Na początku wystarczy krótka wiadomość z informacją
+                    o rodzaju przestrzeni, przybliżonym metrażu, lokalizacji
+                    i oczekiwanym zakresie. Następnie ustalamy, jakie materiały
+                    będą potrzebne i jaka forma współpracy będzie najlepsza.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <section class="faq-group reveal" id="materialy">
+            <div class="faq-group__heading">
+              <span>02</span>
+              <h2>Materiały i pomiary</h2>
+            </div>
+
+            <div class="faq-list">
+              <details>
+                <summary>Jakie materiały należy przygotować na początku?</summary>
+                <div class="faq-answer">
+                  <p>
+                    Najbardziej pomocne są: rzut lub szkic z wymiarami, zdjęcia
+                    obecnego wnętrza, informacje o instalacjach i elementach,
+                    które mają pozostać, a także inspiracje oraz orientacyjny
+                    budżet przeznaczony na realizację.
+                  </p>
+                </div>
+              </details>
+
+              <details>
+                <summary>Czy wykonujesz pomiary wnętrza?</summary>
+                <div class="faq-answer">
+                  <p>
+                    Sposób przygotowania wymiarów ustalamy przed rozpoczęciem
+                    współpracy. Przy projektach online klient przekazuje pomiary
+                    i dokumentację. Możliwość pomiaru stacjonarnego zależy
+                    od lokalizacji i zakresu zlecenia.
+                  </p>
+                </div>
+              </details>
+
+              <details>
+                <summary>Czy muszę mieć gotowy styl lub konkretne inspiracje?</summary>
+                <div class="faq-answer">
+                  <p>
+                    Nie. Inspiracje są pomocne, ale nie są obowiązkowe.
+                    Podczas rozmowy porządkujemy potrzeby, preferencje
+                    i elementy, których chcesz uniknąć, a następnie dobieramy
+                    odpowiedni kierunek stylistyczny.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <section class="faq-group reveal" id="projekt">
+            <div class="faq-group__heading">
+              <span>03</span>
+              <h2>Projekt i realizacja</h2>
+            </div>
+
+            <div class="faq-list">
+              <details>
+                <summary>Ile trwa przygotowanie projektu?</summary>
+                <div class="faq-answer">
+                  <p>
+                    Czas zależy od wielkości przestrzeni, wybranego zakresu,
+                    liczby pomieszczeń oraz kompletności materiałów.
+                    Orientacyjny termin otrzymasz przed rozpoczęciem prac.
+                  </p>
+                </div>
+              </details>
+
+              <details>
+                <summary>Ile zmian można wprowadzić do projektu?</summary>
+                <div class="faq-answer">
+                  <p>
+                    Zakres korekt i sposób przekazywania uwag są określane
+                    indywidualnie w propozycji współpracy. Pozwala to jasno
+                    ustalić przebieg pracy przed jej rozpoczęciem.
+                  </p>
+                </div>
+              </details>
+
+              <details>
+                <summary>Czy projekt zawiera listę produktów i materiałów?</summary>
+                <div class="faq-answer">
+                  <p>
+                    Dobór wyposażenia i materiałów może stanowić część projektu.
+                    Dokładna forma rekomendacji oraz poziom szczegółowości
+                    zależą od wybranego zakresu i są potwierdzane przed startem.
+                  </p>
+                </div>
+              </details>
+
+              <details>
+                <summary>Czy wizualizacja pokazuje dokładny efekt końcowy?</summary>
+                <div class="faq-answer">
+                  <p>
+                    Wizualizacja przedstawia uzgodniony kierunek, proporcje,
+                    kolorystykę i materiały w możliwie realistyczny sposób.
+                    Rzeczywisty odbiór kolorów i faktur może jednak nieznacznie
+                    różnić się zależnie od oświetlenia, ekranu i wykonania.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <section class="faq-group reveal" id="wycena">
+            <div class="faq-group__heading">
+              <span>04</span>
+              <h2>Wycena i płatność</h2>
+            </div>
+
+            <div class="faq-list">
+              <details>
+                <summary>W jaki sposób ustalana jest cena?</summary>
+                <div class="faq-answer">
+                  <p>
+                    Wycena jest przygotowywana po poznaniu metrażu, liczby
+                    pomieszczeń, materiałów wyjściowych i oczekiwanego zakresu.
+                    Dzięki temu płacisz za rzeczywisty zakres potrzebny
+                    w konkretnym projekcie.
+                  </p>
+                </div>
+              </details>
+
+              <details>
+                <summary>Czy można poznać cenę jeszcze przed rozpoczęciem?</summary>
+                <div class="faq-answer">
+                  <p>
+                    Tak. Po otrzymaniu podstawowych informacji i materiałów
+                    przedstawiany jest proponowany zakres oraz wycena.
+                    Prace rozpoczynają się dopiero po zaakceptowaniu warunków.
+                  </p>
+                </div>
+              </details>
+
+              <details>
+                <summary>Jak wygląda płatność?</summary>
+                <div class="faq-answer">
+                  <p>
+                    Warunki płatności oraz ewentualny podział na etapy
+                    są przedstawiane razem z propozycją współpracy i zależą
+                    od wielkości oraz zakresu projektu.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="faq-note" aria-labelledby="faq-note-title">
+        <div class="reveal">
+          <p class="eyebrow">Nadal masz pytanie?</p>
+          <h2 id="faq-note-title">Porozmawiajmy o Twojej przestrzeni</h2>
+        </div>
+
+        <div class="faq-note__content reveal reveal--delay">
+          <p>
+            Opisz rodzaj pomieszczenia, przybliżony metraż i oczekiwany zakres.
+            W odpowiedzi ustalimy, jakie informacje będą jeszcze potrzebne
+            i jaki będzie najlepszy kolejny krok.
+          </p>
+
+          <div class="faq-note__actions">
+            <a class="button button--light" href="kontakt.html">
+              Przejdź do kontaktu
+            </a>
+
+            <a class="button button--outline" href="oferta.html">
+              Wróć do oferty
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a
+        class="brand brand--footer"
+        href="index.html"
+        aria-label="Pracownia Pięknej Przestrzeni"
+      >
+        <span class="brand__mark">PPP</span>
+        <span class="brand__divider"></span>
+        <span class="brand__text">Pracownia<br />Pięknej Przestrzeni</span>
+      </a>
+
+      <div class="footer-contact">
+        <a
+          class="footer-contact__item"
+          href="tel:+48509850497"
+          aria-label="Zadzwoń do Pracowni Pięknej Przestrzeni"
+        >
+          <span class="footer-contact__icon">☎</span>
+          <span>+48 509 850 497</span>
+        </a>
+
+        <a
+          class="footer-contact__item"
+          href="mailto:pracownia.miszczyszyn@gmail.com"
+          aria-label="Napisz e-mail do Pracowni Pięknej Przestrzeni"
+        >
+          <span class="footer-contact__icon">✉</span>
+          <span>pracownia.miszczyszyn@gmail.com</span>
+        </a>
+      </div>
+
+      <div class="footer-social" aria-label="Social media">
+        <a
+          href="https://www.instagram.com/ppp.magda.miszczyszyn"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram Pracowni Pięknej Przestrzeni"
+        >
+          <svg
+            class="footer-social__icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5Zm4.25 3.25A4.75 4.75 0 1 1 7.25 12 4.75 4.75 0 0 1 12 7.25Zm0 2A2.75 2.75 0 1 0 14.75 12 2.75 2.75 0 0 0 12 9.25Zm5-2.25a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"
+            />
+          </svg>
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>
