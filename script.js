@@ -77,3 +77,57 @@ if ('IntersectionObserver' in window) {
 } else {
   revealElements.forEach((element) => element.classList.add('is-visible'));
 }
+
+const portfolioLightbox = document.querySelector('.portfolio-lightbox');
+const portfolioLightboxImage = portfolioLightbox?.querySelector('figure img');
+const portfolioLightboxCaption = portfolioLightbox?.querySelector('figcaption');
+const portfolioLightboxClose = portfolioLightbox?.querySelector('.portfolio-lightbox__close');
+const portfolioLightboxPrev = portfolioLightbox?.querySelector('.portfolio-lightbox__nav--prev');
+const portfolioLightboxNext = portfolioLightbox?.querySelector('.portfolio-lightbox__nav--next');
+const portfolioLightboxItems = Array.from(document.querySelectorAll('[data-lightbox]'));
+let activePortfolioImage = 0;
+
+const updatePortfolioLightbox = (index) => {
+  if (!portfolioLightboxImage || !portfolioLightboxCaption || portfolioLightboxItems.length === 0) return;
+
+  activePortfolioImage = (index + portfolioLightboxItems.length) % portfolioLightboxItems.length;
+  const item = portfolioLightboxItems[activePortfolioImage];
+  const sourceImage = item.querySelector('img');
+
+  if (!sourceImage) return;
+
+  portfolioLightboxImage.src = sourceImage.currentSrc || sourceImage.src;
+  portfolioLightboxImage.alt = sourceImage.alt;
+  portfolioLightboxCaption.textContent = item.dataset.caption || sourceImage.alt;
+};
+
+portfolioLightboxItems.forEach((item, index) => {
+  item.addEventListener('click', () => {
+    if (!portfolioLightbox) return;
+
+    updatePortfolioLightbox(index);
+    portfolioLightbox.showModal();
+  });
+});
+
+portfolioLightboxClose?.addEventListener('click', () => portfolioLightbox?.close());
+portfolioLightboxPrev?.addEventListener('click', () => updatePortfolioLightbox(activePortfolioImage - 1));
+portfolioLightboxNext?.addEventListener('click', () => updatePortfolioLightbox(activePortfolioImage + 1));
+
+portfolioLightbox?.addEventListener('click', (event) => {
+  const bounds = portfolioLightbox.getBoundingClientRect();
+  const clickedOutside =
+    event.clientX < bounds.left ||
+    event.clientX > bounds.right ||
+    event.clientY < bounds.top ||
+    event.clientY > bounds.bottom;
+
+  if (clickedOutside) portfolioLightbox.close();
+});
+
+window.addEventListener('keydown', (event) => {
+  if (!portfolioLightbox?.open) return;
+
+  if (event.key === 'ArrowLeft') updatePortfolioLightbox(activePortfolioImage - 1);
+  if (event.key === 'ArrowRight') updatePortfolioLightbox(activePortfolioImage + 1);
+});
