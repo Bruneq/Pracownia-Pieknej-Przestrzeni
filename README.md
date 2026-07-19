@@ -10,6 +10,8 @@ Responsywna, wielostronicowa strona internetowa pracowni projektowania wnętrz M
 
 Strona prezentuje ofertę, proces współpracy, portfolio realizacji oraz dane kontaktowe Pracowni Pięknej Przestrzeni. Projekt został przygotowany jako lekka strona statyczna, bez frameworków i bez procesu budowania.
 
+Portfolio zostało podzielone na stronę zbiorczą oraz osobne podstrony projektów. Dzięki temu użytkownik może przejść bezpośrednio do wybranej realizacji bez przewijania jednej bardzo długiej strony.
+
 Najważniejsze założenia:
 
 - szybkie ładowanie i dobra wydajność na telefonach oraz komputerach,
@@ -25,8 +27,10 @@ Najważniejsze założenia:
 - ukrywanie i pokazywanie nagłówka podczas przewijania,
 - subtelne animacje wejścia elementów,
 - przycisk „Wróć na górę” omijający stopkę,
-- galeria realizacji z podglądem zdjęć,
+- osobne podstrony dla każdej realizacji,
+- galerie projektów z pełnoekranowym podglądem zdjęć,
 - obsługa gestów przesuwania zdjęć na urządzeniach dotykowych,
+- nawigacja pomiędzy realizacjami,
 - formularz kontaktowy obsługiwany przez Formspree,
 - FAQ,
 - polityka prywatności,
@@ -49,16 +53,28 @@ Projekt nie wymaga Node.js, bundlera ani frameworka do działania.
 
 ## Podstrony
 
-| Plik                        | Zawartość                                 |
-| --------------------------- | ----------------------------------------- |
-| `index.html`                | Strona główna                             |
-| `o-mnie.html`               | Informacje o projektantce i pracowni      |
-| `oferta.html`               | Usługi i zakresy współpracy               |
-| `realizacje.html`           | Portfolio i galeria projektów             |
-| `proces.html`               | Etapy współpracy                          |
-| `kontakt.html`              | Dane kontaktowe i formularz               |
-| `faq.html`                  | Najczęściej zadawane pytania              |
+### Główne strony
+
+| Plik | Zawartość |
+|---|---|
+| `index.html` | Strona główna |
+| `o-mnie.html` | Informacje o projektantce i pracowni |
+| `oferta.html` | Usługi i zakresy współpracy |
+| `realizacje.html` | Indeks wszystkich realizacji |
+| `proces.html` | Etapy współpracy |
+| `kontakt.html` | Dane kontaktowe i formularz |
+| `faq.html` | Najczęściej zadawane pytania |
 | `polityka-prywatnosci.html` | Informacje dotyczące przetwarzania danych |
+
+### Osobne strony realizacji
+
+| Plik | Projekt |
+|---|---|
+| `realizacja-dla-niego.html` | Dla niego |
+| `realizacja-dla-pary.html` | Dla pary |
+| `realizacja-pokoj-goscinny.html` | Pokój gościnny |
+| `realizacja-mini-kawalerka.html` | Mini kawalerka |
+| `realizacja-sypialnia-w-trzech-odslonach.html` | Sypialnia w trzech odsłonach |
 
 ## Struktura repozytorium
 
@@ -69,12 +85,22 @@ Projekt nie wymaga Node.js, bundlera ani frameworka do działania.
 │       └── static.yml
 ├── assets/
 │   ├── realizacje/
-│   ├── favicon.svg
+│   │   ├── DlaNiego/
+│   │   ├── DlaPary/
+│   │   ├── MiniKawalerka/
+│   │   ├── PokojGoscinny/
+│   │   └── SypialniaW3Odslonach/
+│   ├── favicon.png
 │   └── og-cover.jpg
 ├── index.html
 ├── o-mnie.html
 ├── oferta.html
 ├── realizacje.html
+├── realizacja-dla-niego.html
+├── realizacja-dla-pary.html
+├── realizacja-pokoj-goscinny.html
+├── realizacja-mini-kawalerka.html
+├── realizacja-sypialnia-w-trzech-odslonach.html
 ├── proces.html
 ├── kontakt.html
 ├── faq.html
@@ -87,7 +113,33 @@ Projekt nie wymaga Node.js, bundlera ani frameworka do działania.
 └── README.md
 ```
 
-Pliki HTML pozostają w katalogu głównym celowo. Dzięki temu adresy podstron są krótkie i nie trzeba zmieniać istniejących linków, adresów kanonicznych ani mapy witryny.
+Pliki HTML pozostają w katalogu głównym celowo. Dzięki temu adresy podstron są krótkie, a konfiguracja GitHub Pages pozostaje prosta.
+
+## Realizacje
+
+Strona `realizacje.html` pełni funkcję katalogu projektów. Każda karta prowadzi do osobnej podstrony, na której znajdują się:
+
+- opis projektu,
+- najważniejsze założenia,
+- szczegóły funkcjonalne,
+- galeria zdjęć i wizualizacji,
+- rzut projektu,
+- nawigacja do pozostałych realizacji.
+
+Zdjęcia pełnej rozdzielczości oraz miniatury znajdują się w:
+
+```text
+assets/realizacje/<NazwaProjektu>/
+```
+
+Przy dodawaniu nowego zdjęcia należy przygotować:
+
+```text
+nazwa.webp
+nazwa-thumb.webp
+```
+
+Pełny obraz jest używany w podglądzie galerii, a wersja `-thumb.webp` jako lekka miniatura na stronie.
 
 ## Uruchomienie lokalne
 
@@ -159,7 +211,16 @@ Przy dodawaniu lub usuwaniu podstron należy zaktualizować:
 3. adres kanoniczny strony,
 4. metadane Open Graph,
 5. wewnętrzne odnośniki,
-6. politykę prywatności, jeśli zmieniają się używane usługi.
+6. dane strukturalne, jeżeli dotyczą nowej treści.
+
+Przy dodawaniu nowej realizacji należy również:
+
+1. utworzyć osobny plik HTML,
+2. dodać kartę w `realizacje.html`,
+3. zaktualizować nawigację poprzednia/następna realizacja,
+4. dodać adres podstrony do `sitemap.xml`,
+5. dodać zoptymalizowane pliki `.webp` i `-thumb.webp`,
+6. uzupełnić opisy `alt` i podpisy galerii.
 
 Po zmianie `styles.css` lub `script.js` warto zaktualizować parametr wersji w plikach HTML, aby przeglądarki pobrały nową wersję plików.
 
@@ -173,6 +234,8 @@ Po zmianie `styles.css` lub `script.js` warto zaktualizować parametr wersji w p
 ## Status
 
 Strona jest wdrożona produkcyjnie i aktywnie utrzymywana.
+
+Aktualna stabilna wersja: **v1.0.0**.
 
 ## Prawa do materiałów
 
